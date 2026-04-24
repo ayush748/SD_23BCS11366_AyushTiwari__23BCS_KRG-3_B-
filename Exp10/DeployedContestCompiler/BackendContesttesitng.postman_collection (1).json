@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "c1a2d3f4-b111-4aaa-bbbb-123456789abc",
+    "name": "BackendContestTesting_v2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "contest created",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"type\": \"user.created\",\n  \"data\": {\n    \"id\": \"clerk_test_999\",\n    \"email_addresses\": [\n      { \"email_address\": \"newuser@test.com\" }\n    ],\n    \"first_name\": \"Rahul\",\n    \"last_name\": \"Sharma\",\n    \"image_url\": \"https://example.com/user.png\"\n  }\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/clerk-webhook",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["clerk-webhook"]
+        }
+      }
+    },
+    {
+      "name": "create-contest",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"CodeSprint 2026\",\n  \"description\": \"Advanced DSA Contest\",\n  \"startTime\": 1725000000000,\n  \"duration\": 90,\n  \"organizerId\": \"org_12345\",\n  \"wrongSubmissionPenalty\": 20,\n  \"allowedLanguages\": [\"cpp\", \"python\"]\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/create-contest",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["create-contest"]
+        }
+      }
+    },
+    {
+      "name": "request-join",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"joinCode\": \"ZXCVBN\",\n  \"userId\": \"user_56789\"\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/request-join",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["request-join"]
+        }
+      }
+    },
+    {
+      "name": "approve-participant",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"userId\": \"user_56789\",\n  \"organizerId\": \"org_12345\"\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/approve-participant",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["approve-participant"]
+        }
+      }
+    },
+    {
+      "name": "create-problem",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"pCode\": \"B1\",\n  \"title\": \"Max Element\",\n  \"description\": \"Find the maximum element in array\",\n  \"timeLimit\": 2,\n  \"memoryLimit\": 512,\n  \"sampleIO\": [\n    { \"input\": \"5\\n1 2 3 4 5\", \"output\": \"5\" }\n  ],\n  \"hiddenTestCases\": [\n    { \"input\": \"3\\n9 7 8\", \"output\": \"9\" }\n  ],\n  \"points\": 150,\n  \"level\": \"medium\",\n  \"order\": \"2\"\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/create-problem",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["create-problem"]
+        }
+      }
+    },
+    {
+      "name": "submit",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"problemId\": \"prob_789\",\n  \"userId\": \"user_56789\",\n  \"code\": \"#include<iostream>\\nusing namespace std; int main(){cout<<5;}\",\n  \"language\": \"cpp\"\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/submit",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["submit"]
+        }
+      }
+    },
+    {
+      "name": "update-standing",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"userId\": \"user_56789\",\n  \"pointsToAdd\": 150\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/update-standing",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["update-standing"]
+        }
+      }
+    },
+    {
+      "name": "end-contest",
+      "request": {
+        "method": "POST",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"contestId\": \"contest_abc123\",\n  \"organizerId\": \"org_12345\"\n}"
+        },
+        "url": {
+          "raw": "https://focused-donkey-989.convex.site/end-contest",
+          "protocol": "https",
+          "host": ["focused-donkey-989", "convex", "site"],
+          "path": ["end-contest"]
+        }
+      }
+    }
+  ]
+}
